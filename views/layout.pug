@@ -1,0 +1,22 @@
+// views/layout.pug
+doctype html
+html
+  head
+    title Forum App
+    link(rel='stylesheet', href='static/style.css')
+  body
+    header
+      h1 Forum App
+      nav
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='/login') Login
+          li
+            a(href='/signup') Sign Up
+
+    block content
+
+footer
+    p  
