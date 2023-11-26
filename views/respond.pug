@@ -4,19 +4,27 @@ include  layout
 block content
   h1 Respond to Question
   h2 #{full_question.question}
+  if(user)
+    // Form for responding to the question
+    form(action=`/respond/${full_question._id}`, method='post')
+      input(type='hidden', name='questionId', value=questionId)
+      label(for='response') Your Response:
+      textarea(name='response', rows='4', required)
+      button(type='submit') Submit Response
 
-  // Form for responding to the question
-  form(action=`/respond/${full_question._id}`, method='post')
-    input(type='hidden', name='questionId', value=questionId)
-    label(for='response') Your Response:
-    textarea(name='response', rows='4', required)
-    button(type='submit') Submit Response
 
-
-  h2 Responses
-    ul
-      each response in responses
-        ul            
-          p User: #{response.user}
-          p Comment :#{response.responseContent}
-          //- p Date: #{response.date}
+    h2 Responses
+      ul
+        each response in responses
+          .question-card        
+            p User: #{response.user.username}
+            p Comment :#{response.responseContent}
+            //- p Date: #{response.date}
+  else 
+    h2 Responses
+      ul
+        each response in responses
+          .question-card        
+            p User: #{response.user.username}
+            p Comment :#{response.responseContent}
+            //- p Date: #{response.date}    

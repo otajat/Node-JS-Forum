@@ -73,10 +73,8 @@ app.get('/question_list' ,async (req, res) => {
 app.get('/respond/:questionId',async (req, res) => {
     const questionId = req.params.questionId;
     const full_question = await Question.findOne({_id : questionId});
-    const responses = await Response.find({question : questionId});
-    // const user = await getUserDetails(response.user);
-    // Fetch the question details based on questionId and pass it to the response rendering
-    res.render('respond.pug', {full_question : full_question , responses : responses});
+    const responses = await Response.find({question : questionId}).populate("user");
+    res.render('respond.pug', {full_question : full_question , responses : responses , user:req.session.user});
   });
 
 app.post('/respond/:questionId', async (req, res) => {

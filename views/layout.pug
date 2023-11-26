@@ -33,6 +33,11 @@ html
               a(href='/logout') Log Out
         
 
+    script.
+      function redirectToRespond(questionId) {
+        window.location.href = `/respond/${questionId}`;
+      }
+
     block content
 
     

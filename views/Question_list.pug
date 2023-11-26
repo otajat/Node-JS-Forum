@@ -4,7 +4,7 @@ block content
   h1 All Questions
 
   each question in questions
-    .question-card
+    .question-card(onclick=`redirectToRespond('${question._id}')`)
       p User: #{question.user.username}
       p Question: #{question.question}
       if (user)
