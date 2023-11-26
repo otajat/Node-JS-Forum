@@ -3,7 +3,7 @@ include layout.pug
 
 block content
   h1 Login
-  form(action='/auth/login', method='post')
+  form(action='/login', method='post')
     label(for='username') Username:
     input(type='text', id='username', name='username', required)
     label(for='password') Password:

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1#askaquest Ask a Question
+
+  form(action="/post-question", method="post")
+    label(for="question") Question:
+    textarea(name="question", id="question", rows="4", required=true)
+
+    button(type="submit") Post Question
+

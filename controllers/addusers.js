@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// const router = express.Router();
-const User = require('../modules/users'); // Update the path accordingly 
+const User = require('../modules/users');
 
-// Replace 'your_connection_string' with your actual MongoDB connection string
 const MONGODB_URI = 'mongodb://127.0.0.1:27017/forum'
 
 
 
 const addUser = async (req, res) => {
     try{
-        console.log("hello");
-        await mongoose.connect(MONGODB_URI);
+        // console.log("hello");
         const {username, password, email} = req.body;
+        const Username_1 = User.findOne({Username_1:req.body.username});
+        if (Username_1){
+            res.redirect("/signup");
+        }
+        await mongoose.connect(MONGODB_URI);
         let newUser = new User({
             username: username,
             password: password,
@@ -25,5 +27,5 @@ const addUser = async (req, res) => {
     }
 }
 
-module.exports = {addUser, MONGODB_URI,router};
+module.exports = {addUser, MONGODB_URI};
 

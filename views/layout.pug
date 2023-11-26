@@ -3,20 +3,39 @@ doctype html
 html
   head
     title Forum App
-    link(rel='stylesheet', href='static/style.css')
+    link(rel='stylesheet', href='/static/style.css')
   body
+
+  
     header
-      h1 Forum App
-      nav
-        ul
-          li
-            a(href='/') Home
-          li
-            a(href='/login') Login
-          li
-            a(href='/signup') Sign Up
+      h1#layout_out Forum App
+      if(!user) 
+        nav
+          ul
+            li
+              a(href='/') Home 
+            li
+              a(href='/question_list') Questions
+            li
+              a(href='/login') Login
+            li
+              a(href='/signup') Sign Up
+      else 
+        nav
+          ul
+            li
+              a(href='/') Home 
+            li
+              a(href='/question') Ask a Question 
+            li
+              a(href='/question_list') Questions
+            li
+              a(href='/logout') Log Out
+        
 
     block content
 
+    
+
 footer
-    p  
+      
